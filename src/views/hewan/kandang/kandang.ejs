@@ -1,0 +1,334 @@
+<!-- Page Heading -->
+<h1 id="page-heading" class="h3 mb-2 text-gray-800"></h1>
+<p class="mb-4">
+  Berikut merupakan list ternak yang telah di daftarkan dalam Aplikasi Breedingo Aplikasi Peternakan. For more
+  information about Breedingo, please visit the
+  <a target="_blank" href="https://breedingo.com">Official Farm Management</a>.
+</p>
+
+<div class="row justify-content-center">
+  <button
+    type="button"
+    class="btn btn-primary btn-lg mb-4"
+    data-toggle="modal"
+    data-target="#index-modal-tambah-ternak"
+    id="index-button-tambah-ternak"
+  >
+    Tambah Ternak
+  </button>
+</div>
+
+<!-- modal custom-->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="index-modal-tambah-ternak"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Hewan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="form-parent-tambah-ternak">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputEmail4">Label Hewan</label>
+              <input type="text" class="form-control" id="form-label-hewan" />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">Jenis Hewan</label>
+              <select id="index-jenis-hewan" class="form-control"></select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputEmail4">Berat Hewan (Kg)</label>
+              <input type="number" class="form-control" id="form-berat-hewan" value="0" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Harga Beli</label>
+
+              <div class="col-auto">
+                <label class="sr-only" for="inlineFormInputGroup"></label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Rp.</div>
+                  </div>
+                  <input type="number" class="form-control" id="form-harga-beli-hewan" value="0" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Harga Hewan</label>
+              <div class="col-auto">
+                <label class="sr-only" for="inlineFormInputGroup"></label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Rp.</div>
+                  </div>
+                  <input type="number" class="form-control" id="form-harga-jual-hewan" value="0" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form" id="index-form-pemesan" hidden>
+            <h5 class="modal-title mb-2 mt-2 text-primary" id="exampleModalLabel">Data Pemesan</h5>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Nama Pemesan</label>
+                <input type="text" class="form-control" id="inputEmail4" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">HP Pemesan</label>
+                <input type="text" class="form-control" id="inputEmail4" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputState">Status Pembayaran</label>
+                <select id="input-status-pembayaran" class="form-control">
+                  <option selected>Belum Bayar</option>
+                  <option id="option-bayar-pesan">Sudah DP</option>
+                  <option>Lunas</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6" id="form-hidden-besaran-pembayaran">
+                <label for="inputEmail4">Besaran Pembayaran</label>
+                <div class="col-auto">
+                  <label class="sr-only" for="inlineFormInputGroup"></label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">Rp.</div>
+                    </div>
+                    <input type="text" class="form-control" id="kandang-form-besaran-pembayaran" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Alamat Pemesan</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Alamat Pengiriman</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="button-simpan-tambah-ternak" onclick="tambah_hewan()">
+          Simpan
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal custom-->
+
+<div class="row justify-content-center">
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="font-weight-bold text-primary mb-1">Kandang</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">49 Ekor</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Annual) Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="font-weight-bold text-success mb-1">Pesan</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">20 Ekor</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tasks Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="font-weight-bold text-info mb-1">DP</div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50 Ekor</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-success"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pending Requests Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="font-weight-bold text-warning mb-1">Lunas</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">18 Ekor</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-comments fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center" hidden>
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="font-weight-bold text-primary mb-1">Di Proses</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">49 Ekor</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Annual) Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="font-weight-bold text-success mb-1">Di Kirim</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">20 Ekor</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tasks Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="font-weight-bold text-info mb-1">Terkirim</div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50 Ekor</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-success"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pending Requests Card Example -->
+  <div class="col-xl-2 col-md-6 mb-4">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="font-weight-bold text-warning mb-1">Selesai</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">18 Ekor</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-comments fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Data Ternak</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Label ternak</th>
+              <th>Jenis Hewan</th>
+              <th>Berat Hewan</th>
+              <th>Harga Beli</th>
+              <th>Harga Hewan</th>
+              <th>Margin Keuntungan</th>
+              <th>Status Ternak</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Action</th>
+              <th>Label ternak</th>
+              <th>Jenis Hewan</th>
+              <th>Berat Hewan</th>
+              <th>Harga Beli</th>
+              <th>Harga Hewan</th>
+              <th>Margin Keuntungan</th>
+              <th>Status Ternak</th>
+            </tr>
+          </tfoot>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
+
+<script src="hewan/kangang.js"></script>
